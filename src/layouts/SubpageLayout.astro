@@ -1,0 +1,33 @@
+---
+const { class: className, ...props } = Astro.props
+---
+
+<div
+  class:list={['container', className]}
+  {...props}
+>
+  <slot />
+</div>
+
+<style is:global>
+  .container {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    padding-bottom: 5rem;
+  }
+
+  .container > h1 {
+    display: grid;
+    place-items: center;
+    padding-block: 5rem;
+    font-weight: 600;
+  }
+
+  @media (width <= 768px) {
+    .container h1 {
+      padding-block: 2.5rem;
+      font-size: 1.75rem;
+    }
+  }
+</style>

@@ -1,0 +1,80 @@
+<header>
+  <div class="header__inner">
+    <a
+      href="/"
+      class="logo"
+    >
+      Astro Playgrounds
+    </a>
+    <ul class="list">
+      <li>
+        <a
+          href="https://devymt.com/"
+          class="link"
+          target="_blank"
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://gist.github.com/H-ymt"
+          class="link"
+          target="_blank"
+          >GitHub Gist
+        </a>
+      </li>
+      <li>
+        <a
+          href=""
+          class="link"
+        >
+          Sources
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<style>
+  .logo {
+    width: fit-content;
+    padding: 0.25rem 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-base);
+    border-radius: var(--rounded-md);
+  }
+
+  .logo:hover {
+    text-decoration: none;
+  }
+
+  .header__inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    align-items: center;
+    max-width: 64rem;
+    padding-block: 1.25rem;
+    padding-inline: 1.5rem;
+    margin-inline: auto;
+  }
+
+  .list {
+    display: flex;
+    list-style-type: none;
+  }
+
+  .link {
+    padding: 0.5rem 1rem;
+    color: var(--color-text-base);
+    border-radius: var(--rounded-md);
+    transition: color 0.2s;
+  }
+
+  .link:hover {
+    color: var(--color-link-hover);
+    text-decoration: none;
+  }
+</style>

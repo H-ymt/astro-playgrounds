@@ -1,0 +1,274 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import SubpageLayout from '../../layouts/SubpageLayout.astro'
+---
+
+<Layout>
+  <SubpageLayout>
+    <h1>Anchor Positioning</h1>
+    <div>
+      <nav data-magnetic>
+        <ul>
+          <li>
+            <a
+              href="#home"
+              id="home"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#links"
+              id="links"
+              >Links</a
+            >
+          </li>
+          <li>
+            <a
+              href="#rates"
+              id="rates"
+              >Rates</a
+            >
+          </li>
+          <li>
+            <a
+              href="#speaking"
+              id="speaking"
+              >Speaking</a
+            >
+          </li>
+          <li>
+            <a
+              href="#ai"
+              id="ai"
+              >AI</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </SubpageLayout>
+</Layout>
+
+<style>
+  ul {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    color: color-mix(in lch, canvasText 50%, canvas);
+    list-style: none;
+    touch-action: none;
+    transition: color 0.2s;
+  }
+
+  .bear-link {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    aspect-ratio: 1;
+    color: canvasText;
+    opacity: 0.8;
+  }
+
+  :where(.x-link, .bear-link):is(:hover, :focus-visible) {
+    opacity: 1;
+  }
+
+  .bear-link svg {
+    width: 75%;
+  }
+
+  li {
+    display: grid;
+    place-items: center;
+    font-weight: 400;
+  }
+
+  li a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem 1.25rem;
+    color: currentColor;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    color: canvasText;
+  }
+
+  :is(a, button) {
+    outline-color: color-mix(in lch, canvasText, transparent 50%);
+  }
+
+  a:is(:focus-visible, :hover),
+  ul:has(a:target:is(:focus-visible, :hover))::after {
+    color: canvasText;
+  }
+
+  ul:has(a:is(:focus-visible, :hover)) {
+    --intent: 1;
+  }
+
+  ul::before,
+  ul::after {
+    --transition: 0.18s;
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    content: '';
+    background: color-mix(in lch, canvasText, canvas 85%);
+    border-radius: 6px;
+    opacity: var(--intent, 0);
+    transition:
+      top var(--transition),
+      left var(--transition),
+      height var(--transition),
+      opacity var(--transition),
+      color var(--transition),
+      width var(--transition);
+    transition-timing-function: linear(
+      0 0%,
+      0.2342 12.49%,
+      0.4374 24.99%,
+      0.6093 37.49%,
+      0.6835 43.74%,
+      0.7499 49.99%,
+      0.8086 56.25%,
+      0.8593 62.5%,
+      0.9023 68.75%,
+      0.9375 75%,
+      0.9648 81.25%,
+      0.9844 87.5%,
+      0.9961 93.75%,
+      1 100%
+    );
+  }
+
+  ul::after {
+    top: calc(var(--target-y) * 1px);
+    left: calc((var(--target-x) * 1px) + 1.25rem);
+    width: calc((var(--target-width) * 1px) - 2.5rem);
+    height: calc(var(--target-height) * 1px);
+    background: transparent;
+    border-bottom: 2px solid currentColor;
+    border-radius: 0;
+    opacity: 1;
+    view-transition-name: target;
+  }
+
+  /* Targeting */
+  @supports (anchor-name: --a) {
+    a:target {
+      anchor-name: --target;
+    }
+    li:has(a:is(:hover, :focus-visible)) {
+      anchor-name: --anchor;
+    }
+
+    ul::before {
+      top: anchor(top);
+      left: anchor(left);
+      width: anchor-size(width);
+      height: anchor-size(height);
+      position-anchor: --anchor;
+    }
+
+    ul::after {
+      top: anchor(top);
+      left: calc(anchor(left) + 1.25rem);
+      width: calc(anchor-size(width) - 2.5rem);
+      height: anchor-size(height);
+      position-anchor: --target;
+    }
+  }
+
+  ::view-transition-group(target),
+  ::view-transition-group(item) {
+    mix-blend-mode: normal;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .theme[aria-pressed='true'] path:first-of-type,
+  .theme[aria-pressed='false'] path:last-of-type {
+    display: block;
+  }
+  .theme[aria-pressed='true'] path:last-of-type,
+  .theme[aria-pressed='false'] path:first-of-type {
+    display: none;
+  }
+
+  [data-flip-ui='true'] {
+    view-transition-name: none;
+  }
+
+  [data-no-anchor] ul::before,
+  [data-no-anchor] ul::after {
+    --transition: 0.18s;
+    position: fixed;
+    top: calc(var(--item-active-y) * 1px);
+    left: calc(var(--item-active-x) * 1px);
+    z-index: -1;
+    width: calc(var(--item-active-width) * 1px);
+    height: calc(var(--item-active-height) * 1px);
+    pointer-events: none;
+    content: '';
+    background: color-mix(in lch, canvasText, canvas 85%);
+    border-radius: 6px;
+    opacity: var(--intent, 0);
+    transition:
+      all var(--transition),
+      top var(--transition),
+      left var(--transition),
+      height var(--transition),
+      opacity var(--transition),
+      color var(--transition),
+      width var(--transition);
+    transition-timing-function: linear(
+      0 0%,
+      0.2342 12.49%,
+      0.4374 24.99%,
+      0.6093 37.49%,
+      0.6835 43.74%,
+      0.7499 49.99%,
+      0.8086 56.25%,
+      0.8593 62.5%,
+      0.9023 68.75%,
+      0.9375 75%,
+      0.9648 81.25%,
+      0.9844 87.5%,
+      0.9961 93.75%,
+      1 100%
+    );
+  }
+
+  [data-no-anchor] ul::after {
+    top: calc(var(--target-y) * 1px);
+    left: calc((var(--target-x) * 1px) + 1.25rem);
+    width: calc((var(--target-width) * 1px) - 2.5rem);
+    height: calc(var(--target-height) * 1px);
+    background: transparent;
+    border-bottom: 2px solid currentColor;
+    border-radius: 0;
+    opacity: 1;
+    view-transition-name: target;
+  }
+</style>
+
+<script src="../../assets/js/anchor-positioning.js"></script>

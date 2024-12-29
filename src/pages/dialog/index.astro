@@ -1,0 +1,124 @@
+---
+import Container from '../../components/Container.astro'
+import Layout from '../../layouts/Layout.astro'
+import SubpageLayout from '../../layouts/SubpageLayout.astro'
+---
+
+<Layout>
+  <SubpageLayout>
+    <Container class="scrollControl">
+      <h1>Modal using HTML dialog</h1>
+
+      <div class="modalWrapper js-modalWrapper">
+        <button
+          type="button"
+          class="openModal js-modalTrigger"
+        >
+          Open Modal
+        </button>
+        <dialog
+          aria-label="Modal name"
+          class="dialog scrollControl js-modal"
+        >
+          <div class="modal__inner">
+            <h1 class="modal__title">Lorem ipsum dolor sit.</h1>
+            <p class="modal__text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa cumque odit quaerat libero, facere tempora
+              placeat molestias eum sed error rerum quisquam veritatis. Excepturi beatae ut vitae autem saepe expedita!
+            </p>
+            <button
+              type="button"
+              class="closeModal js-modalClose"
+              >Close Modal
+            </button>
+          </div>
+        </dialog>
+      </div>
+    </Container>
+  </SubpageLayout>
+</Layout>
+
+<style>
+  body:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  body:has(dialog[open]) .scrollControl {
+    overflow: auto;
+  }
+
+  dialog {
+    opacity: 0;
+    transition:
+      opacity 0.3s,
+      display 0.3s allow-discrete;
+  }
+
+  dialog[open] {
+    opacity: 1;
+  }
+
+  @starting-style {
+    dialog[open] {
+      opacity: 0;
+    }
+  }
+
+  .modalWrapper {
+    display: grid;
+    justify-items: center;
+  }
+
+  .openModal,
+  .closeModal {
+    width: 100%;
+    max-width: 16rem;
+    padding: 0.95rem 1.75rem 0.85rem;
+    font-size: 1rem;
+    color: var(--color-text-white);
+    letter-spacing: 0.05em;
+    background-color: var(--button-primary);
+    border: 1px solid var(--button-primary);
+    border-radius: var(--rounded-md);
+    transition: background-color 0.3s;
+  }
+
+  .openModal:hover,
+  .closeModal:hover {
+    background-color: color-mix(in srgb, var(--button-primary), var(--color-text-white) 8%);
+  }
+
+  .closeModal {
+    display: inline-grid;
+    max-width: 12rem;
+    margin-top: 1rem;
+  }
+
+  .dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    place-items: center;
+    width: 100%;
+    max-width: 60rem;
+    border: none;
+    border-radius: var(--rounded-md);
+    transform: translate(-50%, -50%);
+  }
+
+  .dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.64);
+    backdrop-filter: blur(4px);
+  }
+
+  .modal__inner {
+    display: grid;
+    gap: 0.5rem;
+    place-items: center;
+    align-content: center;
+    height: 60vh;
+    padding: 1rem 2rem;
+  }
+</style>
+
+<script src="../../assets/js/modal.js"></script>
