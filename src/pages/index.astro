@@ -1,28 +1,25 @@
 ---
-import background from '../assets/background.svg'
 import Container from '../components/Container.astro'
 import Layout from '../layouts/Layout.astro'
 
 const pageList = [
   {
-    title: 'dialogタグを使用したモーダル',
+    title: '<dialog>タグを使用したモーダル',
     href: '/dialog',
   },
   {
     title: 'Anchor Positioning',
     href: '/anchor-positioning',
   },
+  {
+    title: '<details>タグを使用した排他的アコーディオン',
+    href: '/accordion',
+  },
 ]
 ---
 
 <Layout>
   <Container class="container">
-    <img
-      class="background"
-      src={background.src}
-      alt=""
-      fetchpriority="high"
-    />
     <ul class="list">
       {
         pageList.map((page) => (

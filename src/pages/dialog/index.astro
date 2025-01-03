@@ -7,7 +7,7 @@ import SubpageLayout from '../../layouts/SubpageLayout.astro'
 <Layout>
   <SubpageLayout>
     <Container class="scrollControl">
-      <h1>Modal using HTML dialog</h1>
+      <h1>Modal using HTML <code>&lt;dialog&gt;</code></h1>
 
       <div class="modalWrapper js-modalWrapper">
         <button
@@ -23,8 +23,10 @@ import SubpageLayout from '../../layouts/SubpageLayout.astro'
           <div class="modal__inner">
             <h1 class="modal__title">Lorem ipsum dolor sit.</h1>
             <p class="modal__text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa cumque odit quaerat libero, facere tempora
-              placeat molestias eum sed error rerum quisquam veritatis. Excepturi beatae ut vitae autem saepe expedita!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
+              cumque odit quaerat libero, facere tempora placeat molestias eum
+              sed error rerum quisquam veritatis. Excepturi beatae ut vitae
+              autem saepe expedita!
             </p>
             <button
               type="button"
@@ -85,7 +87,11 @@ import SubpageLayout from '../../layouts/SubpageLayout.astro'
 
   .openModal:hover,
   .closeModal:hover {
-    background-color: color-mix(in srgb, var(--button-primary), var(--color-text-white) 8%);
+    background-color: color-mix(
+      in srgb,
+      var(--button-primary),
+      var(--color-text-white) 8%
+    );
   }
 
   .closeModal {

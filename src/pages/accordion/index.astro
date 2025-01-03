@@ -1,0 +1,92 @@
+---
+import Container from '../../components/Container.astro'
+import Layout from '../../layouts/Layout.astro'
+import SubpageLayout from '../../layouts/SubpageLayout.astro'
+---
+
+<Layout>
+  <SubpageLayout>
+    <Container>
+      <h1>Accordion using HTML <code>&lt;details&gt;</code></h1>
+
+      <details
+        class="details js-details"
+        name="accordion"
+      >
+        <summary class="summary js-summary">Question</summary>
+        <div class="content js-content">
+          <div class="content__inner">
+            <p class="content__text">
+              <span
+                >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit
+                hic optio saepe dignissimos voluptate tenetur quam mollitia
+                corporis quo, perferendis tempora distinctio eos possimus animi
+                aperiam tempore at adipisci praesentium.
+              </span>
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details
+        class="details js-details"
+        name="accordion"
+      >
+        <summary class="summary js-summary">Question</summary>
+        <div class="content js-content">
+          <div class="content__inner">
+            <p class="content__text">
+              <span
+                >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit
+                hic optio saepe dignissimos voluptate tenetur quam mollitia
+                corporis quo, perferendis tempora distinctio eos possimus animi
+                aperiam tempore at adipisci praesentium.
+              </span>
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <details
+        class="details js-details"
+        name="accordion"
+      >
+        <summary class="summary js-summary">Question</summary>
+        <div class="content js-content">
+          <div class="content__inner">
+            <p class="content__text">
+              <span
+                >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit
+                hic optio saepe dignissimos voluptate tenetur quam mollitia
+                corporis quo, perferendis tempora distinctio eos possimus animi
+                aperiam tempore at adipisci praesentium.
+              </span>
+            </p>
+          </div>
+        </div>
+      </details>
+    </Container>
+  </SubpageLayout>
+</Layout>
+
+<style>
+  summary {
+    cursor: pointer;
+  }
+
+  .details {
+    width: 100%;
+    max-width: 40rem;
+    border-radius: 4px;
+  }
+
+  .summary {
+    padding: 0.5rem 0.25rem;
+  }
+
+  .summary:hover {
+    background-color: #f6f6f6;
+  }
+</style>
+
+<script src="../../assets/js/accodion.js"></script>
