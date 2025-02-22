@@ -51,8 +51,14 @@ const falloff = (index) => () => {
   } else {
     nav.style.setProperty('--item-active-x', `var(--item-${index + 1}-x)`)
     nav.style.setProperty('--item-active-y', `var(--item-${index + 1}-y)`)
-    nav.style.setProperty('--item-active-width', `var(--item-${index + 1}-width)`)
-    nav.style.setProperty('--item-active-height', `var(--item-${index + 1}-height)`)
+    nav.style.setProperty(
+      '--item-active-width',
+      `var(--item-${index + 1}-width)`,
+    )
+    nav.style.setProperty(
+      '--item-active-height',
+      `var(--item-${index + 1}-height)`,
+    )
   }
 }
 for (let i = 0; i < anchors.length; i++) {
@@ -63,7 +69,9 @@ const deactivate = async () => {
   const transitions = document.getAnimations()
   if (transitions.length) {
     const fade = transitions.find(
-      (t) => t.effect.target === nav.firstElementChild && t.transitionProperty === 'opacity',
+      (t) =>
+        t.effect.target === nav.firstElementChild &&
+        t.transitionProperty === 'opacity',
     )
     await Promise.allSettled([fade.finished])
     if (supportsAnchorPos) {
@@ -85,7 +93,10 @@ nav.addEventListener('blur', deactivate)
  * */
 const orientator = document.querySelector('.direction-handler')
 const orient = () => {
-  orientator.setAttribute('aria-pressed', orientator.matches('[aria-pressed=false') ? true : false)
+  orientator.setAttribute(
+    'aria-pressed',
+    orientator.matches('[aria-pressed=false') ? true : false,
+  )
   calibrate()
 }
 

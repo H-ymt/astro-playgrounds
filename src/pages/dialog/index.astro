@@ -10,16 +10,10 @@ import SubpageLayout from '../../layouts/SubpageLayout.astro'
       <h1>Modal using HTML <code>&lt;dialog&gt;</code></h1>
 
       <div class="modalWrapper js-modalWrapper">
-        <button
-          type="button"
-          class="openModal js-modalTrigger"
-        >
+        <button type="button" class="openModal js-modalTrigger">
           Open Modal
         </button>
-        <dialog
-          aria-label="Modal name"
-          class="dialog scrollControl js-modal"
-        >
+        <dialog aria-label="Modal name" class="dialog scrollControl js-modal">
           <div class="modal__inner">
             <h1 class="modal__title">Lorem ipsum dolor sit.</h1>
             <p class="modal__text">
@@ -28,9 +22,7 @@ import SubpageLayout from '../../layouts/SubpageLayout.astro'
               sed error rerum quisquam veritatis. Excepturi beatae ut vitae
               autem saepe expedita!
             </p>
-            <button
-              type="button"
-              class="closeModal js-modalClose"
+            <button type="button" class="closeModal js-modalClose"
               >Close Modal
             </button>
           </div>
